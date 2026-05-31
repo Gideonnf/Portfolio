@@ -1,0 +1,69 @@
+---
+// 1. Everything between the dashes is server-side JavaScript
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const featuredProjects = [
+  {
+    title: "Custom 2D Game Engine",
+    description: "Built a customized C++ backend utilizing a highly performant dynamic rendering pipeline and a robust Entity Component System (ECS). Optimized to handle intense projectile calculations seamlessly.",
+    tags: ["C++", "Architecture", "ECS", "Math"],
+  },
+  {
+    title: "Autonomous Robotics Middleware",
+    description: "Prototyped system-level integration layers and workflow coordination layers within smart district simulated environments using robotics architectures.",
+    tags: ["ROS 2", "RMF", "C++", "Python"],
+  }
+];
+---
+
+<BaseLayout title="Gideon Francis | Systems & Gameplay Programmer">
+  
+  <section class="space-y-6 md:my-10">
+    <div class="space-y-2">
+      <p class="text-xs font-semibold tracking-widest text-indigo-400 uppercase">System Initialization Complete</p>
+      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight font-sans text-zinc-50">
+        Gideon Francis
+      </h1>
+      <h2 class="text-lg text-zinc-400 font-medium font-sans">
+        Software & Gameplay Systems Developer
+      </h2>
+    </div>
+
+    <p class="text-sm leading-relaxed text-zinc-400 max-w-2xl font-sans">
+      I focus on core engine architecture, high-performance systems simulation, and building software tools from the bedrock up. I prefer understanding how the memory allocations, physics steps, and graphics loops operate beneath the screen.
+    </p>
+    
+    <div class="pt-4 flex gap-4 text-xs">
+      <a href="/projects" class="px-4 py-2 bg-zinc-800 text-zinc-200 border border-zinc-700 rounded hover:bg-indigo-600 hover:border-indigo-500 hover:text-white transition font-sans font-semibold">
+        Explore Systems & Projects &rarr;
+      </a>
+      <a href="https://github.com/gideonnf" target="_blank" class="px-4 py-2 text-zinc-400 border border-transparent rounded hover:text-zinc-200 transition">
+        View Source [GitHub]
+      </a>
+    </div>
+  </section>
+
+  <section class="mt-20 space-y-6">
+    <div class="flex items-center justify-between border-b border-zinc-800 pb-2">
+      <h3 class="text-xs uppercase font-bold tracking-wider text-zinc-400">Selected Subsystems</h3>
+      <a href="/projects" class="text-xs text-indigo-400 hover:underline">All logs</a>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-4">
+      {featuredProjects.map(project => (
+        <div class="p-5 bg-zinc-900/40 border border-zinc-800/80 rounded-lg space-y-4 hover:border-zinc-700 transition">
+          <div class="space-y-1">
+            <h4 class="font-sans font-bold text-zinc-200 text-base">{project.title}</h4>
+            <p class="text-xs text-zinc-400 font-sans leading-relaxed line-clamp-3">{project.description}</p>
+          </div>
+          <div class="flex flex-wrap gap-1.5">
+            {project.tags.map(tag => (
+              <span class="text-[10px] px-2 py-0.5 font-semibold font-mono bg-zinc-800 text-zinc-400 rounded border border-zinc-700/50">{tag}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+</BaseLayout>
