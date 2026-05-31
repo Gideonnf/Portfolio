@@ -36,12 +36,12 @@ const { title } = Astro.props;
     </header>
 
     <!-- Page Content will inject right here dynamically -->
-    <main class="flex-1 max-w-4xl w-full mx-auto px-6 py-12">
+    <main class="flex-1 max-w-4xl w-full mx-auto">
       <slot />
     </main>
 
     <footer class="border-t border-zinc-900 py-6 text-center text-xs text-zinc-600">
-      &copy; {new Date().getFullYear()} Gideon Francis. Built from scratch.
+      &copy; {new Date().getFullYear()} Gideon Francis. Built with Astro.js and Tailwind.
     </footer>
   </body>
 </html>

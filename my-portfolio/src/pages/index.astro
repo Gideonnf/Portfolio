@@ -4,8 +4,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const featuredProjects = [
   {
-    title: "Custom 2D Game Engine",
-    description: "Built a customized C++ backend utilizing a highly performant dynamic rendering pipeline and a robust Entity Component System (ECS). Optimized to handle intense projectile calculations seamlessly.",
+    title: "Carmicah Engine",
+    description: "A Custom 2D Game Engine ",
     tags: ["C++", "Architecture", "ECS", "Math"],
   },
   {
@@ -18,34 +18,53 @@ const featuredProjects = [
 
 <BaseLayout title="Gideon Francis | Systems & Gameplay Programmer">
   
-  <section class="space-y-6 md:my-10">
-    <div class="space-y-2">
-      <p class="text-xs font-semibold tracking-widest text-indigo-400 uppercase">System Initialization Complete</p>
-      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight font-sans text-zinc-50">
-        Gideon Francis
-      </h1>
-      <h2 class="text-lg text-zinc-400 font-medium font-sans">
-        Software & Gameplay Systems Developer
-      </h2>
+  <section class="flex flex-col-reverse md:flex-row md:items-center justify-between gap-12 md:my-16">
+    <div class="space-y-6 flex-1">
+      <div class="space-y-2">
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight font-sans text-zinc-50">
+          Gideon Francis
+        </h1>
+        <h2 class="text-lg md:text-xl text-zinc-400 font-medium font-sans">
+          Gameplay and Software Developer
+        </h2>
+      </div>
+
+      <p class="text-sm md:text-base leading-relaxed text-zinc-400 max-w-2xl font-sans">
+        Hey! I'm Gideon! Welcome to my website. You can visit my <a href="/projects">projects</a> to find out more about what I've done.
+		<br>
+		<br>
+		A little bit about me, I graduated from Game Development and Technology in Nanyang Polytechnic's School of Interactive and Digital Media. I've always had an interest
+		in games since young, playing them throughout my childhood. Starting with games like Warcraft 3 and Habbo Hotel. It's because of these games that inspired me to enter
+		game development in polytechnic. From there, I went into Digipen's Real-time Interactive Simulations. This went further into game development and software development.
+		It was what made me realise that there is more than just games. Game engines and software was also a fun venture to explore. 
+		<br>
+		<br>
+		I love working together with people to create something, whether it is a game or not. If it helps people as a tool, or provide entertainment, it provides me with a sense of 
+		fulfilment knowing that I was part of the team that made that.
+      </p>
+      
+      <div class="pt-4 flex gap-4 text-xs md:text-sm">
+        <a href="/projects" class="px-6 py-3 bg-zinc-800 text-zinc-200 border border-zinc-700 rounded-lg hover:bg-indigo-600 hover:border-indigo-500 hover:text-white transition font-sans font-semibold">
+          My Projects &rarr;
+        </a>
+        <a href="https://github.com/gideonnf" target="_blank" class="px-6 py-3 text-zinc-400 border border-zinc-800 rounded-lg hover:text-zinc-200 hover:border-zinc-700 transition">
+          My Github
+        </a>
+      </div>
     </div>
 
-    <p class="text-sm leading-relaxed text-zinc-400 max-w-2xl font-sans">
-      I focus on core engine architecture, high-performance systems simulation, and building software tools from the bedrock up. I prefer understanding how the memory allocations, physics steps, and graphics loops operate beneath the screen.
-    </p>
-    
-    <div class="pt-4 flex gap-4 text-xs">
-      <a href="/projects" class="px-4 py-2 bg-zinc-800 text-zinc-200 border border-zinc-700 rounded hover:bg-indigo-600 hover:border-indigo-500 hover:text-white transition font-sans font-semibold">
-        Explore Systems & Projects &rarr;
-      </a>
-      <a href="https://github.com/gideonnf" target="_blank" class="px-4 py-2 text-zinc-400 border border-transparent rounded hover:text-zinc-200 transition">
-        View Source [GitHub]
-      </a>
+    <div class="w-64 h-96 md:w-80 md:h-110 shrink-0 mx-auto md:mx-0 overflow-hidden rounded-2xl border-2 border-zinc-800/50 shadow-2xl">
+      <img 
+        src="/GideonFusion.png" 
+        alt="Gideon Francis" 
+        class="w-full h-full object-cover"
+      />
     </div>
   </section>
 
   <section class="mt-20 space-y-6">
     <div class="flex items-center justify-between border-b border-zinc-800 pb-2">
-      <h3 class="text-xs uppercase font-bold tracking-wider text-zinc-400">Selected Subsystems</h3>
+      <h3 class="text-xs uppercase font-bold tracking-wider text-zinc-400">Showcase Projects</h3>
       <a href="/projects" class="text-xs text-indigo-400 hover:underline">All logs</a>
     </div>
 
@@ -65,5 +84,16 @@ const featuredProjects = [
       ))}
     </div>
   </section>
+
+    <section class="mt-20 space-y-6">
+    <div class="flex items-center justify-between border-b border-zinc-800 pb-2">
+      <h3 class="text-xs uppercase font-bold tracking-wider text-zinc-400">Most recent logs</h3>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-4">
+      
+    </div>
+  </section>
+
 
 </BaseLayout>
