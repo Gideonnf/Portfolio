@@ -1,19 +1,14 @@
 ---
-// 1. Everything between the dashes is server-side JavaScript
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
 
-const featuredProjects = [
-  {
-    title: "Carmicah Engine",
-    description: "A Custom 2D Game Engine ",
-    tags: ["C++", "Architecture", "ECS", "Math"],
-  },
-  {
-    title: "Autonomous Robotics Middleware",
-    description: "Prototyped system-level integration layers and workflow coordination layers within smart district simulated environments using robotics architectures.",
-    tags: ["ROS 2", "RMF", "C++", "Python"],
-  }
-];
+const featuredProjects = await getCollection('projects', ({ data }) => {
+  return data.isFeatured === true;
+});
+
+const recentLogs = await getCollection('logs');
+recentLogs.sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
+const displayLogs = recentLogs.slice(0, 4);
 ---
 
 <BaseLayout title="Gideon Francis | Systems & Gameplay Programmer">
@@ -65,22 +60,22 @@ const featuredProjects = [
   <section class="mt-20 space-y-6">
     <div class="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800 pb-2">
       <h3 class="text-xs uppercase font-bold tracking-wider text-zinc-500 dark:text-zinc-400">Showcase Projects</h3>
-      <a href="/projects" class="text-xs text-indigo-600 dark:text-indigo-400 hover:underline">All logs</a>
+      <a href="/projects" class="text-xs text-indigo-600 dark:text-indigo-400 hover:underline">View all projects</a>
     </div>
 
     <div class="grid md:grid-cols-2 gap-4">
       {featuredProjects.map(project => (
-        <div class="p-5 bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800/80 rounded-lg space-y-4 hover:border-zinc-300 dark:hover:border-zinc-700 transition">
+        <a href={`/projects/${project.id}`} class="block p-5 bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800/80 rounded-lg space-y-4 hover:border-indigo-500/50 dark:hover:border-indigo-500/50 transition group">
           <div class="space-y-1">
-            <h4 class="font-sans font-bold text-zinc-900 dark:text-zinc-200 text-base">{project.title}</h4>
-            <p class="text-xs text-zinc-600 dark:text-zinc-400 font-sans leading-relaxed line-clamp-3">{project.description}</p>
+            <h4 class="font-sans font-bold text-zinc-900 dark:text-zinc-200 text-base group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition">{project.data.title}</h4>
+            <p class="text-xs text-zinc-600 dark:text-zinc-400 font-sans leading-relaxed line-clamp-3">{project.data.description}</p>
           </div>
           <div class="flex flex-wrap gap-1.5">
-            {project.tags.map(tag => (
+            {project.data.tags.map(tag => (
               <span class="text-[10px] px-2 py-0.5 font-semibold font-mono bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 rounded border border-zinc-200 dark:border-zinc-700/50">{tag}</span>
             ))}
           </div>
-        </div>
+        </a>
       ))}
     </div>
   </section>
@@ -88,10 +83,17 @@ const featuredProjects = [
     <section class="mt-20 space-y-6">
     <div class="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800 pb-2">
       <h3 class="text-xs uppercase font-bold tracking-wider text-zinc-500 dark:text-zinc-400">Most recent logs</h3>
+      <a href="/logs" class="text-xs text-indigo-600 dark:text-indigo-400 hover:underline">View all logs</a>
     </div>
 
     <div class="grid md:grid-cols-2 gap-4">
-      
+      {displayLogs.map(log => (
+        <a href={`/logs/${log.id}`} class="p-4 bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800/80 rounded-lg space-y-2 hover:border-indigo-500/50 transition group">
+          <time class="text-[10px] font-mono text-zinc-500 uppercase">{log.data.publishDate}</time>
+          <h4 class="font-sans font-bold text-zinc-900 dark:text-zinc-200 text-sm group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition">{log.data.title}</h4>
+          <p class="text-xs text-zinc-600 dark:text-zinc-400 font-sans line-clamp-2">{log.data.description}</p>
+        </a>
+      ))}
     </div>
   </section>
 

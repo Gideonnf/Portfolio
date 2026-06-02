@@ -1,0 +1,32 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const logs = await getCollection('logs');
+  return logs.map(entry => ({
+    params: { slug: entry.id }, props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<BaseLayout title={`${entry.data.title} | Gideon Francis`}>
+  <article class="mt-12 space-y-8">
+    <div class="space-y-4">
+      <a href="/logs" class="text-sm text-indigo-600 dark:text-indigo-400 hover:underline inline-flex items-center gap-1">
+        &larr; Back to logs
+      </a>
+      <div class="space-y-2">
+        <time class="text-xs font-mono text-zinc-500 uppercase">{entry.data.publishDate}</time>
+        <h1 class="text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50">{entry.data.title}</h1>
+      </div>
+    </div>
+
+    <div class="prose prose-zinc dark:prose-invert max-w-none prose-headings:font-bold prose-a:text-indigo-600 dark:prose-a:text-indigo-400">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>
