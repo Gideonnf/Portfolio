@@ -9,6 +9,12 @@ const featuredProjects = await getCollection('projects', ({ data }) => {
 const recentLogs = await getCollection('logs');
 recentLogs.sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
 const displayLogs = recentLogs.slice(0, 4);
+
+const skillCategories = [
+  { title: "Languages", skills: ["C++", "C#", "JavaScript", "TypeScript", "HTML/CSS"] },
+  { title: "Engines & Frameworks", skills: ["Unity", "Unreal Engine", "Custom Engines", "Astro", "React"] },
+  { title: "Tools & Software", skills: ["Git / GitHub", "Visual Studio", "RenderDoc", "Perforce"] }
+];
 ---
 
 <BaseLayout title="Gideon Francis | Systems & Gameplay Programmer">
@@ -24,23 +30,20 @@ const displayLogs = recentLogs.slice(0, 4);
         </h2>
       </div>
 
-      <p class="text-sm md:text-base leading-relaxed text-zinc-600 dark:text-zinc-400 max-w-2xl font-sans">
+    <p class="text-sm md:text-base leading-relaxed text-zinc-600 dark:text-zinc-400 max-w-2xl font-sans">
         Hey! I'm Gideon! Welcome to my website. You can visit my <a href="/projects" class="text-indigo-600 dark:text-indigo-400 hover:underline">projects</a> to find out more about what I've done.
-		<br>
-		<br>
-		A little bit about me, I graduated from Game Development and Technology in Nanyang Polytechnic's School of Interactive and Digital Media. I've always had an interest
-		in games since young, playing them throughout my childhood. Starting with games like Warcraft 3 and Habbo Hotel. It's because of these games that inspired me to enter
-		game development in polytechnic. From there, I went into Digipen's Real-time Interactive Simulations. This went further into game development and software development.
-		It was what made me realise that there is more than just games. Game engines and software was also a fun venture to explore. 
 		<br>
 		<br>
 		I love working together with people to create something, whether it is a game or not. If it helps people as a tool, or provide entertainment, it provides me with a sense of 
 		fulfilment knowing that I was part of the team that made that.
-      </p>
+    </p>
       
       <div class="pt-4 flex gap-4 text-xs md:text-sm">
         <a href="/projects" class="px-6 py-3 bg-zinc-900 dark:bg-zinc-800 text-zinc-100 dark:text-zinc-200 border border-zinc-800 dark:border-zinc-700 rounded-lg hover:bg-indigo-600 hover:border-indigo-500 hover:text-white transition font-sans font-semibold">
-          My Projects &rarr;
+          My Projects
+        </a>
+        <a href="/AboutMe" class="px-6 py-3 bg-zinc-900 dark:bg-zinc-800 text-zinc-100 dark:text-zinc-200 border border-zinc-800 dark:border-zinc-700 rounded-lg hover:bg-indigo-600 hover:border-indigo-500 hover:text-white transition font-sans font-semibold">
+          About me
         </a>
         <a href="https://github.com/gideonnf" target="_blank" class="px-6 py-3 text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-800 rounded-lg hover:text-zinc-900 dark:hover:text-zinc-200 hover:border-zinc-300 dark:hover:border-zinc-700 transition">
           My Github
@@ -54,6 +57,26 @@ const displayLogs = recentLogs.slice(0, 4);
         alt="Gideon Francis" 
         class="w-full h-full object-cover"
       />
+    </div>
+  </section>
+  <section class="mt-20 space-y-6">
+    <div class="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800 pb-2">
+      <h3 class="text-xs uppercase font-bold tracking-wider text-zinc-500 dark:text-zinc-400">Skills & Technologies</h3>
+    </div>
+
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+      {skillCategories.map(category => (
+        <div class="p-5 bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800/80 rounded-lg space-y-3">
+          <h4 class="font-sans font-bold text-zinc-900 dark:text-zinc-200 text-sm tracking-wide uppercase">{category.title}</h4>
+          <div class="flex flex-wrap gap-2">
+            {category.skills.map(skill => (
+              <span class="text-xs px-2.5 py-1 font-semibold font-mono bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 rounded border border-zinc-200 dark:border-zinc-700/50">
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   </section>
 

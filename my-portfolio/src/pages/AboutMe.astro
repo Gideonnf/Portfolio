@@ -5,11 +5,32 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="About Me | Gideon Francis">
-  <section class="mt-12 space-y-8">
-    <h1 class="text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50">About Me</h1>
-    <p class="text-zinc-600 dark:text-zinc-400 leading-relaxed">
-      To write next time :D
+  <section class="flex flex-col md:flex-row md:items-center justify-between gap-12 md:my-16">  
+    <div class="w-72 h-102 md:w-96 md:h-120 shrink-0 mx-auto md:mx-0 overflow-hidden rounded-2xl border-2 border-zinc-200 dark:border-zinc-800/50 shadow-2xl">
+      <img 
+        src="/IMG_9960.png" 
+        alt="Gideon Francis" 
+        class="w-full h-full object-cover"
+      />
+    </div>
+    <div class="space-y-6 flex-1">
+      <div class="space-y-2">
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight font-sans text-zinc-900 dark:text-zinc-50">
+          About Me
+        </h1>
+      </div>
+
+    <p class="text-sm md:text-base leading-relaxed text-zinc-600 dark:text-zinc-400 max-w-2xl font-sans">
+        This is where you can find out more about me! My educational path, my co-curricular activities (CCA) and my
+        experiences.
+        <br>
+        <br>
+        A little bit about me, I graduated from Game Development and Technology in Nanyang Polytechnic's School of Interactive and Digital Media. I've always had an interest
+        in games since young, playing them throughout my childhood. Starting with games like Warcraft 3 and Habbo Hotel. It's because of these games that inspired me to enter
+        game development in polytechnic. From there, I went into Digipen's Real-time Interactive Simulations. This went further into game development and software development.
+        It was what made me realise that there is more than just games. Game engines and software was also a fun venture to explore. 
     </p>
+
   </section>
 </BaseLayout>
 
