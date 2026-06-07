@@ -1,8 +1,8 @@
 ---
-title: "Sugar Strike & Projectiles"
-description: "A custom 2D engine built from scratch to support dynamic projectile behaviors."
+title: "Sugar Strike"
+description: "A 2.5D Tower defense game created using Carmicah Engine"
 publishDate: "2026-01-15"
-tags: ["C++", "2D Engine", "Game Dev"]
+tags: ["C#", "Mono", "Custom Engine"]
 itchGameId: "123456" # Replace with your actual Itch.io Embed Upload ID
 ---
 
