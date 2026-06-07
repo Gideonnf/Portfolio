@@ -10,6 +10,7 @@ const projects = defineCollection({
     publishDate: z.string().optional(),
     isFeatured: z.boolean().default(false),
     itchGameId: z.string().optional(),
+    youtubeVideoId: z.string().optional(),
   }),
 });
 

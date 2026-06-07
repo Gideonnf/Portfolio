@@ -5,17 +5,18 @@ publishDate: "2026-01-15"
 tags: ["C++", "C#", "Mono", "Custom Engine", "ECS"]
 youtubeVideoId: "i1VNaxWlPes"
 itchGameId: "" 
+isFeatured: true
 ---
-### Overview
+## Overview
 **Carmicah Engine** is a custom C++ 2D OpenGL game engine with C# Mono scripting integration developed during my sophomore year at Digipen (GAM 200). Built over 6 months, by a multidisciplinary team of 6 programmers and 2 artists, the engine was custom-architectured from scratch to develop **Sugar Strike**, a fast-paced, projectile-heavy tower defense game.
 
 Navigating our first foray into engine development, the team had to overcome steep learning curves. As the Technical Lead, I focused on the core engine architecture as well as a few other key systems. Because our prior experience was primary in Unity, we heavily leveraged it's component-based workflow as a reference for our own design.
 
-### Technical Overview
-## Entity Component System (ECS)
+## Technical Overview
+### Entity Component System (ECS)
 One of the bonus requirements in our module was to implement a ECS. I took up this challenge as I foresaw that being a projectile-dense game with many enemies, it might help to have this. I utilized a contiguous, hole-free component array architecture mapped via entity IDs and bitset signatures, the system maximized CPU cache locality and minimized cache misses. This memory layout ensured that heavy systems like physics and rendering could efficiently iterate over hundreds of active entities simultaneously without performance bottlenecks, seamlessly bridging the user-friendly component workflow our team knew from Unity with high-performance C++ execution.
 
-## C# Mono
+### C# Mono
 To replicate the flexible workflow our team was accustomed to in Unity, I engineered a scripting subsystem by embedding the Mono Runtime API into our native C++ core. This allowed the team to write high-level gameplay logic such as tower behaviours and UI states in C# without risking native stability or enduring lengthy C++ recompile times.
 
 Key elements of this implementation included:
